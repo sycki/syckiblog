@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frame::header">
+</head>
+
+<script>
+window.onload=function(){
+	var e = document.getElementById("article");
+	e.textContent = localStorage.getItem("article_text");
+	parser_article("article");
+}
+</script>
+
+<body>
+
+<nav th:replace="frame::navigator">
+</nav>
+
+<article id="article" class="markdown-body">
+## 文章标题
+正文部分
+
+</article>
+
+<br>
+
+<footer th:replace="frame::footer" class="markdown-body">
+</footer>
+
+<br>
+
+</body>
+</html>
+

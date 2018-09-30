@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frame::header">
+</head>
+
+<script>
+window.onload=function(){
+	var e = document.getElementById("login-form");
+	var url = e.getAttribute("action") + "/" + reshow_context;
+	e.setAttribute("action",url);
+}
+</script>
+<body>
+
+<nav th:replace="frame::navigator">
+</nav>
+
+<form id="login-form" name="login-form" autocomplete="off" th:action="@{/login}" action="/login" method="post" onsubmit="return login_data_check()">
+<article id="login" class="markdown-body">
+<h2>登录</h2>
+<input id="input-user" class="input-block" placeholder="用户名" name="username" /><br/>
+<input id="input-pass" class="input-block" placeholder="密码" name="password" type="password" /><br/>
+<input id="input-code" class="input-block" style="display:inline-block;margin:0em;" placeholder="验证码" name="validatecode" />
+
+<img src="../static/image/validatecode.jpg" th:src="@{/validatecode}" id="validateCode"
+	 alt="加载中..." onclick="getElementById('validateCode').src='/validatecode?id='+Math.random()" /><br/>
+<input class="input-but" value="提交" type="submit" />
+<span th:text="${message}" style="color:#f55;"></span>
+</article>
+</form>
+<br>
+
+
+<footer th:replace="frame::footer" class="markdown-body">
+</footer>
+
+<br>
+
+</body>
+</html>
+
